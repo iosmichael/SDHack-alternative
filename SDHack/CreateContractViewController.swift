@@ -22,10 +22,6 @@ class CreateContractViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func createContractButtonPressed(_ sender: Any) {
-        print("create contract button pressed")
-        self.performSegue(withIdentifier: "showContractDetails", sender: self)
-    }
 
 }
 
