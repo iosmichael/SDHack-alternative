@@ -9,6 +9,7 @@ target 'SDHack' do
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
   pod 'AlamofireNetworkActivityIndicator', :git => 'https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git'
+  pod 'DocuSignESign', '~> 3.0.1'
 
 
 
