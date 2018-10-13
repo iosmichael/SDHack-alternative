@@ -6,7 +6,7 @@ target 'SDHack' do
   use_frameworks!
 
   # Pods for SDHacks2018
-  pod 'SwiftyJSON'
+  pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
   pod 'AlamofireNetworkActivityIndicator', :git => 'https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git'
 
