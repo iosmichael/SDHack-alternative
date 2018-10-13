@@ -1,0 +1,37 @@
+PODS:
+  - Alamofire (4.7.3)
+  - AlamofireNetworkActivityIndicator (2.3.0):
+    - Alamofire (~> 4.7)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`)
+  - AlamofireNetworkActivityIndicator (from `https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git`)
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  Alamofire:
+    :git: https://github.com/Alamofire/Alamofire.git
+  AlamofireNetworkActivityIndicator:
+    :git: https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: a5cd9e233f24df3583f4b02f7e4722c076ab9032
+    :git: https://github.com/Alamofire/Alamofire.git
+  AlamofireNetworkActivityIndicator:
+    :commit: 3ace5a928804b60cad6945a0ba50a633a3ebb4ca
+    :git: https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git
+
+SPEC CHECKSUMS:
+  Alamofire: 5f691e36644ab9a04e6df58bfa74b2d627a6919b
+  AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: ef60746a787a214d99da2040b819f845465437ef
+
+COCOAPODS: 1.5.3
