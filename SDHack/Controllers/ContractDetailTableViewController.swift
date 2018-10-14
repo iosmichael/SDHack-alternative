@@ -15,7 +15,8 @@ class ContractDetailTableViewController: UITableViewController {
     
     var userInfo:[String:String] = ["first":"", "last":"", "email":""]
     var carInfo:[String: String] = ["model":"", "year":"", "price":""]
-    
+    var carTags:[String: String] = [:]
+    var seller: [String: String] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.downloadAPI()
@@ -28,7 +29,7 @@ class ContractDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0) ? 1 : self.carInfo.count + 1
+        return (section == 0) ? 1 : self.carInfo.count + self.carTags.count + 2
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -36,6 +37,10 @@ class ContractDetailTableViewController: UITableViewController {
             if indexPath.row == 0 {
                 let controller = storyboard?.instantiateViewController(withIdentifier: "craigslistController") as! CraigslistLinkViewController
                 controller.setParentController(controller: self)
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+            if indexPath.row == self.carInfo.count + self.carTags.count + 1 {
+                let controller = storyboard?.instantiateViewController(withIdentifier: "previewController") as! PreviewViewController
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         }
@@ -50,11 +55,18 @@ class ContractDetailTableViewController: UITableViewController {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "craigslist", for: indexPath) as! CraigslistTableViewCell
                 return cell
+            }else if indexPath.row == self.carInfo.count + self.carTags.count + 1{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "next")
+                return cell!
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "carInfo", for: indexPath) as! CarInfoTableViewCell
-                let key = Array(self.carInfo.keys)[indexPath.row - 1]
-                print("\(key):\(self.carInfo[key])")
-                cell.setLabel(keyLabel: key, valueLabel: self.carInfo[key]!)
+                if indexPath.row < self.carInfo.count + 1 {
+                    let key = Array(self.carInfo.keys)[indexPath.row - 1]
+                    cell.setLabel(keyLabel: key, valueLabel: self.carInfo[key]!)
+                }else{
+                    let key = Array(self.carTags.keys)[indexPath.row - self.carInfo.count]
+                    cell.setLabel(keyLabel: key, valueLabel: self.carTags[key]!)
+                }
                 return cell
             }
         }
@@ -80,7 +92,7 @@ class ContractDetailTableViewController: UITableViewController {
         let apiToContact = "https://account-d.docusign.com/oauth/userinfo"
         guard let url = URL(string: apiToContact) else {return assertionFailure("URL Failed")}
         var request = URLRequest(url: url)
-        request.setValue("Bearer eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQkAAAABAAUABwCAYT9FIDHWSAgAgKFiU2Mx1kgCAIkI7G6XMQdIiPxoo8qM80QVAAEAAAAYAAEAAAAFAAAADQAkAAAAZjBmMjdmMGUtODU3ZC00YTcxLWE0ZGEtMzJjZWNhZTNhOTc4EgABAAAACwAAAGludGVyYWN0aXZlMACANA5EIDHWSA.qAhB6vcx3mqeA4Se-UfaVAQiRaoX_C48eYs59B879dPCXQerO9__EURHuFCXc1cRtCgYdKkCZcRIUloVWAtewUv2Juu0VKZRK2X0JKKPEiGaPpL1xpxkVOb6ncTiWaN9U-qZjgyLQHsqIitWJn2x3YpGiOsf1Y1D3USjVfiHT7bqFCTVOv3AHqtdMX28SXRE3OZ8f3T7VKPnaPOzgwr-SuCigGHLIFN_aPx-7_MqOC_D1G6C2Y0W4y8UGuKwMp0iceWwuzWVWTdBjvLx8nLWSZ9eTq13GgHkeOsi9NxHCnag25I5AK4RxLt8jgwTUIx5WewcBcDaB9MvMKXAYoJYGw", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQkAAAABAAUABwAAIbZfmjHWSAgAAGHZbd0x1kgCAOzMCd1cp5dFt0cU4P6OyscVAAEAAAAYAAEAAAAFAAAADQAkAAAAZjBmMjdmMGUtODU3ZC00YTcxLWE0ZGEtMzJjZWNhZTNhOTc4EgABAAAACwAAAGludGVyYWN0aXZlMAAA9IRemjHWSA.jyjjyc9yzGi4CZpqG58eKQotpVLKk81R92MTA5PLAI0xrlaA128mFGZ9N8awm_SUtP7rOqh1V3Q6dQtsPs-qnA-A1j9qs0ASS6CxrDXNkr4yKBlDHBoZNiCu9hoqhAjQVK9oAXJyDhGnpP5KEnCXpO7mt_lo13OyQINK8GhFdvmvwLDCMRxe3922gpB2snUxuvkNjB6DSJ3N7--pY6X0mhBWyH0sO1C8N26wVk5EyXXEp538Tvy7M7DhzI0SasGkRnkUQC4nhQDs725MBCIlCk-kcnTe6yAofavL97eewYknZGYAQ3XOzM-dvRkYX7U5PwxokDexn_YJZTkbnuPR-A", forHTTPHeaderField: "Authorization")
         
         Alamofire.request(request).validate().responseJSON() { response in
             print(response)
@@ -101,16 +113,14 @@ class ContractDetailTableViewController: UITableViewController {
             if let value = response.result.value {
                 let json = JSON(value)
                 for (key, _) in json {
-                    self.carInfo[key] = json[key].stringValue
+                    if key != "model" || key != "price" || key != "year" {
+                        self.carInfo[key] = json[key].stringValue
+                    }else{
+                        self.carTags[key] = json[key].stringValue
+                    }
                 }
-                self.carInfo["model"] = json["model"].stringValue
-                self.carInfo["price"] = json["price"].stringValue
-                self.carInfo["year"] = json["year"].stringValue
                 self.tableView.reloadData()
             }
-//            self.carInfo["Model"] = JSON["model"]
-//            self.carInfo["Year"] = JSON["year"]
-//            self.carInfo["Price"] = JSON["price"]
         }
     }
     

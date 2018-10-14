@@ -1,21 +1,17 @@
 //
 //  Contract.swift
-//  SDHacks2018
+//  SDHack
 //
-//  Created by Sakura Rapolu on 10/13/18.
-//  Copyright © 2018 SDHacks. All rights reserved.
+//  Created by Michael Liu on 10/13/18.
+//  Copyright © 2018 sdhack. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct Contract {
-    var receipientName: String
-    var receipientEmail: String
-    var car: Car
-    
-    init(rN: String, rE: String, car: Car){
-        self.receipientName = rN
-        self.receipientEmail = rE
-        self.car = car
+class Contract: NSObject {
+    var userInfo: [String:String] = [:]
+    var carInfo:[String: String] = [:]
+    override init() {
+        
     }
 }
