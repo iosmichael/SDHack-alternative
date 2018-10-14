@@ -40,6 +40,11 @@ class ContractDetailTableViewController: UITableViewController {
                 self.navigationController?.pushViewController(controller, animated: true)
             }
             if indexPath.row == self.carInfo.count + self.carTags.count + 1 {
+                DocuSignAPI.getEnvolope { (envelopeId) in
+                    DocuSignAPI.getTabIds(envelopeId: envelopeId, completion: { (listOfTabs) in
+                        print(listOfTabs)
+                    })
+                }
                 let controller = storyboard?.instantiateViewController(withIdentifier: "previewController") as! PreviewViewController
                 self.navigationController?.pushViewController(controller, animated: true)
             }
@@ -95,7 +100,6 @@ class ContractDetailTableViewController: UITableViewController {
         request.setValue("Bearer eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQkAAAABAAUABwAAIbZfmjHWSAgAAGHZbd0x1kgCAOzMCd1cp5dFt0cU4P6OyscVAAEAAAAYAAEAAAAFAAAADQAkAAAAZjBmMjdmMGUtODU3ZC00YTcxLWE0ZGEtMzJjZWNhZTNhOTc4EgABAAAACwAAAGludGVyYWN0aXZlMAAA9IRemjHWSA.jyjjyc9yzGi4CZpqG58eKQotpVLKk81R92MTA5PLAI0xrlaA128mFGZ9N8awm_SUtP7rOqh1V3Q6dQtsPs-qnA-A1j9qs0ASS6CxrDXNkr4yKBlDHBoZNiCu9hoqhAjQVK9oAXJyDhGnpP5KEnCXpO7mt_lo13OyQINK8GhFdvmvwLDCMRxe3922gpB2snUxuvkNjB6DSJ3N7--pY6X0mhBWyH0sO1C8N26wVk5EyXXEp538Tvy7M7DhzI0SasGkRnkUQC4nhQDs725MBCIlCk-kcnTe6yAofavL97eewYknZGYAQ3XOzM-dvRkYX7U5PwxokDexn_YJZTkbnuPR-A", forHTTPHeaderField: "Authorization")
         
         Alamofire.request(request).validate().responseJSON() { response in
-            print(response)
             if let value = response.result.value {
                 let json = JSON(value)
                 self.userInfo["first"] = json["given_name"].stringValue
