@@ -45,7 +45,21 @@ class ContractDetailTableViewController: UITableViewController {
                     self.envelopeId = envelopeId
                     print(envelopeId)
                     DocuSignAPI.getTabIds(envelopeId: envelopeId, completion: { (listOfTabs) in
-                        print(listOfTabs)
+                        var listOfShit: [String] = []
+                        listOfShit.append(self.userInfo["first"]!) // person's first name , eventually add last
+                        listOfShit.append(self.carInfo["year"]!)
+                        listOfShit.append("Model: ")
+                        listOfShit.append(self.carInfo["model"]!)
+                        listOfShit.append("VIN!")
+                        listOfShit.append("Mileage!!")
+                        listOfShit.append("October 14, 2018")
+                        listOfShit.append(self.carInfo["price"]!)
+                        listOfShit.append(self.carTags.description)
+                        DocuSignAPI.updateTabValues(envelopeId: envelopeId, listOfTabIds: listOfTabs, listOfShit: listOfShit, completion: {
+                            DocuSignAPI.sendEnvelope(envelopeId: envelopeId, completion: {
+                                print("FINALLY DONE")
+                            })
+                        })
                     })
                 }
             }
