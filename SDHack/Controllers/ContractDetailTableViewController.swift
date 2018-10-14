@@ -60,9 +60,6 @@ class ContractDetailTableViewController: UITableViewController {
                 
                 // Present the controller
                 self.present(alertController, animated: true, completion: nil)
-//                let controller = storyboard?.instantiateViewController(withIdentifier: "craigslistController") as! CraigslistLinkViewController
-//                controller.setParentController(controller: self)
-//                self.navigationController?.pushViewController(controller, animated: true)
             }
             if indexPath.row == self.carInfo.count + self.carTags.count + 1 {
                 DocuSignAPI.getEnvolope(email: self.seller["email"]!, name: self.seller["firstName"]!) { (envelopeId) in
@@ -180,21 +177,5 @@ class ContractDetailTableViewController: UITableViewController {
     }
     */
 
-}
-
-extension ContractDetailTableViewController: TextFieldDelegate {
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-        (textField as? ErrorTextField)?.isErrorRevealed = false
-    }
-    
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        (textField as? ErrorTextField)?.isErrorRevealed = false
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        (textField as? ErrorTextField)?.isErrorRevealed = true
-        return true
-    }
 }
 

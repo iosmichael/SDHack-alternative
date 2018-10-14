@@ -1,37 +1,25 @@
 //
-//  CraigslistLinkViewController.swift
+//  SuccessViewController.swift
 //  SDHack
 //
-//  Created by Michael Liu on 10/13/18.
+//  Created by Michael Liu on 10/14/18.
 //  Copyright © 2018 sdhack. All rights reserved.
 //
 
 import UIKit
 
-class CraigslistLinkViewController: UIViewController {
+class SuccessViewController: UIViewController {
 
-    @IBOutlet weak var craigslistLink: UITextField!
-    var parentController: ContractDetailTableViewController?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction))
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func demo(_ sender: Any) {
-        craigslistLink.text = "https://sandiego.craigslist.org/csd/cto/d/1964-cadillac-deville/6722998788.html"
+    @objc func cancelAction(){
+        self.navigationController?.popToRootViewController(animated: true)
     }
-    func setParentController(controller:ContractDetailTableViewController){
-        self.parentController = controller
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        //self.parentController?.receiveParseData(link: self.craigslistLink.text!)
-    }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -11,6 +11,7 @@ import UIKit
 class Contract: NSObject {
     var userInfo: [String:String] = [:]
     var carInfo:[String: String] = [:]
+    
     override init() {
         
     }
