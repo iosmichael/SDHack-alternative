@@ -2,22 +2,33 @@ PODS:
   - Alamofire (4.7.3)
   - AlamofireNetworkActivityIndicator (2.3.0):
     - Alamofire (~> 4.7)
+  - Material (2.16.4):
+    - Material/Core (= 2.16.4)
+  - Material/Core (2.16.4):
+    - Motion (~> 1.4.3)
+  - Motion (1.4.3):
+    - Motion/Core (= 1.4.3)
+  - Motion/Core (1.4.3)
   - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`)
   - AlamofireNetworkActivityIndicator (from `https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git`)
-  - SwiftyJSON
+  - Material (~> 2.0)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - SwiftyJSON
+    - Material
+    - Motion
 
 EXTERNAL SOURCES:
   Alamofire:
     :git: https://github.com/Alamofire/Alamofire.git
   AlamofireNetworkActivityIndicator:
     :git: https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
   Alamofire:
@@ -26,12 +37,17 @@ CHECKOUT OPTIONS:
   AlamofireNetworkActivityIndicator:
     :commit: 3ace5a928804b60cad6945a0ba50a633a3ebb4ca
     :git: https://github.com/Alamofire/AlamofireNetworkActivityIndicator.git
+  SwiftyJSON:
+    :commit: 3f6f1d32df6e5f334593682b20bb829e48bffbee
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   Alamofire: 5f691e36644ab9a04e6df58bfa74b2d627a6919b
   AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
+  Material: 4ed78690b09ffd148b5ffab6b4367fb1d8da1cd3
+  Motion: 153ba49692997888556c7a95207278a8b1f8be95
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: ef60746a787a214d99da2040b819f845465437ef
+PODFILE CHECKSUM: 1c3d2f8a16d22d4fdbdeb2e23527bb86e44a58c4
 
 COCOAPODS: 1.5.3
