@@ -23,9 +23,9 @@ class ModalViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func demo(_ sender: Any) {
-        self.firstName.text = ""
-        self.lastName.text = ""
-        self.email.text = ""
+        self.firstName.text = "Michael"
+        self.lastName.text = "Liu"
+        self.email.text = "x4liu@eng.ucsd.edu"
     }
     
     @IBAction func cancelEditing(_ sender: Any) {
