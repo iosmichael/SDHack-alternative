@@ -25,7 +25,8 @@ class DocuSignAPI: NSObject {
         do { request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) } catch {print("HELLO")}
         
         Alamofire.request(request).validate().responseJSON() {response in
-            completion(JSON(response.result.value)["envelopeId"].stringValue)
+            print(response)
+            completion(JSON(response.result.value)["url"].stringValue)
         }
     }
     
@@ -88,7 +89,6 @@ class DocuSignAPI: NSObject {
                 let json = JSON(value)
                 for tab in json["textTabs"].arrayValue {
                     toOutput.append(tab["tabId"].stringValue)
-                    print("tab: " + tab["tabId"].stringValue)
                 }
             }
             completion(toOutput)

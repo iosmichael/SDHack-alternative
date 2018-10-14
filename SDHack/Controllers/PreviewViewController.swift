@@ -11,27 +11,28 @@ import Alamofire
 import SwiftyJSON
 import WebKit
 
-class PreviewViewController: UIViewController, UIWebViewDelegate {
+class PreviewViewController: UIViewController{
     var envelopeId: String = ""
 
     @IBOutlet weak var webView: WKWebView!
     
-    override func loadView() {
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self as? WKUIDelegate
-        view = webView
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         DocuSignAPI.getImageUrl(envelopeId: envelopeId) { (link) in
-            let myURL = URL(string:link)
-            let myRequest = URLRequest(url: myURL!)
-            self.webView.load(myRequest)
+            print(link)
+            print(self.envelopeId)
+            let url = URL (string: link)
+            let requestObj = URLRequest(url: url!)
+            self.webView.load(requestObj)
         }
     }
     
-
+    @IBAction func successButtonPressed(_ sender: Any) {
+        //DocuSignAPI.sendEnvelope(envelopeId: envelopeId) {
+            self.performSegue(withIdentifier: "success", sender: self)
+        //}
+    }
+    
     /*
     // MARK: - Navigation
 
