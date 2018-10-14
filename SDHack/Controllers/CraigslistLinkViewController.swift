@@ -25,7 +25,7 @@ class CraigslistLinkViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.parentController?.receiveParseData(link: self.craigslistLink.text!)
+        //self.parentController?.receiveParseData(link: self.craigslistLink.text!)
     }
     
     

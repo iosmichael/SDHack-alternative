@@ -36,9 +36,33 @@ class ContractDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-                let controller = storyboard?.instantiateViewController(withIdentifier: "craigslistController") as! CraigslistLinkViewController
-                controller.setParentController(controller: self)
-                self.navigationController?.pushViewController(controller, animated: true)
+                let alertController = UIAlertController(title: "Enter Craigslist Link", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addTextField { (textField : UITextField!) -> Void in
+                    textField.placeholder = "Link"
+                }
+                // Create the actions
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                    UIAlertAction in
+                    let link = alertController.textFields![0].text!
+                    self.receiveParseData(link: link, completion: {
+                        
+                    })
+                }
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+                    UIAlertAction in
+                    NSLog("Cancel Pressed")
+                }
+                
+                // Add the actions
+                alertController.addAction(okAction)
+                alertController.addAction(cancelAction)
+                
+                // Present the controller
+                self.present(alertController, animated: true, completion: nil)
+//                let controller = storyboard?.instantiateViewController(withIdentifier: "craigslistController") as! CraigslistLinkViewController
+//                controller.setParentController(controller: self)
+//                self.navigationController?.pushViewController(controller, animated: true)
             }
             if indexPath.row == self.carInfo.count + self.carTags.count + 1 {
                 DocuSignAPI.getEnvolope(email: self.seller["email"]!, name: self.seller["firstName"]!) { (envelopeId) in
@@ -46,7 +70,6 @@ class ContractDetailTableViewController: UITableViewController {
                     print(envelopeId)
                     DocuSignAPI.getTabIds(envelopeId: envelopeId, completion: { (listOfTabs) in
                         var listOfShit: [String] = []
-                        listOfShit.removeAll()
                         listOfShit.append(self.seller["firstName"]! + " " + self.seller["lastName"]!)
                         listOfShit.append(self.carInfo["year"]!)
                         listOfShit.append("Model: ")
@@ -56,7 +79,7 @@ class ContractDetailTableViewController: UITableViewController {
                         listOfShit.append("October 14, 2018")
                         listOfShit.append(self.carInfo["price"]!)
                         listOfShit.append(self.carTags.description)
-                        DocuSignAPI.updateTabValues(envelopeId: envelopeId, listOfTabIds: listOfTabs, listOfShit: listOfShit, completion: {
+                        DocuSignAPI.updateTabValues(envelopeId: envelopeId, listOfTabIds: listOfTabs, listOfStuff: listOfShit, completion: {
                             DocuSignAPI.sendEnvelope(envelopeId: envelopeId, completion: {
                                 print("FINALLY DONE")
                             })
@@ -128,7 +151,7 @@ class ContractDetailTableViewController: UITableViewController {
         }
     }
     
-    func receiveParseData(link:String){
+    func receiveParseData(link:String, completion: @escaping (() -> Void)){
         let apiToContact = "http://ec2-52-53-154-16.us-west-1.compute.amazonaws.com:3001/?"
         let parameters = ["url":link]
         Alamofire.request(apiToContact, parameters: parameters).responseJSON(options:.mutableContainers) {response in
@@ -142,6 +165,7 @@ class ContractDetailTableViewController: UITableViewController {
                     }
                 }
                 self.tableView.reloadData()
+                completion()
             }
         }
     }

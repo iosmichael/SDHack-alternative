@@ -30,20 +30,22 @@ class DocuSignAPI: NSObject {
         }
     }
     
-    public class func updateTabValues(envelopeId: String, listOfTabIds: [String], listOfShit: [String], completion: @escaping (() -> Void)) {
+    public class func updateTabValues(envelopeId: String, listOfTabIds: [String], listOfStuff: [String], completion: @escaping (() -> Void)) {
+        var listOfShit = listOfStuff
 
         let api =  "https://demo.docusign.net/restapi/v2/accounts/6807336/envelopes/\(envelopeId)/recipients/1/tabs"
         let url = URL(string: api)
-        let parameters = ["textTabs":[["tabId":listOfTabIds[0], "value":listOfShit[1]],
-                                      ["tabId":listOfTabIds[1], "value":listOfShit[2]],
-                                      ["tabId":listOfTabIds[2], "value":listOfShit[3]],
-                                      ["tabId":listOfTabIds[3], "value":listOfShit[4]],
-                                      ["tabId":listOfTabIds[4], "value":listOfShit[5]],
-                                      ["tabId":listOfTabIds[5], "value":listOfShit[6]],
-                                      ["tabId":listOfTabIds[6], "value":listOfShit[7]],
-                                      ["tabId":listOfTabIds[7], "value":listOfShit[8]],
-                                      ["tabId":listOfTabIds[8], "value":listOfShit[8]]
+        let parameters = ["textTabs":[["tabLabel":"Text 8b194486-ffd8-468d-adea-9c768abac462", "value":listOfShit.removeFirst()],
+                                      ["tabLabel":"year", "value":listOfShit.removeFirst()],
+                                      ["tabLabel":"make", "value":listOfShit.removeFirst()],
+                                      ["tabLabel":"model", "value":listOfShit.removeFirst()],
+                                      ["tabLabel":"VIN", "value":listOfShit.removeFirst()],
+                                      ["tabLabel":"mileage", "value":listOfShit.removeFirst()],
+                                      ["tabLabel":"date of sale", "value":listOfShit.removeFirst()],
+                                      ["tabLabel":"Text ed0d71c3-5f5c-4269-9c48-19e65da5ba76", "value":listOfShit.removeFirst()],
+                                      ["tabLabel":"Text d5fc3281-8dd5-4ff0-8c31-51c3a1b978ab", "value":listOfShit.removeFirst()]
             ]]
+        print("count of this stuff: \(listOfShit.count)")
         var request = URLRequest(url: url!)
         request.httpMethod = "PUT"
         request.addValue(token, forHTTPHeaderField: "Authorization")
