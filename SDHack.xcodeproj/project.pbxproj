@@ -53,7 +53,7 @@
 		448D69C62172A5770057B07E /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		448D69C82172A5790057B07E /* Contract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contract.swift; sourceTree = "<group>"; };
 		448D69CA2172A57D0057B07E /* ContractDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractDetailsViewController.swift; sourceTree = "<group>"; };
-		448D69CC2172A57F0057B07E /* CreateContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateContractViewController.swift; sourceTree = "<group>"; };
+		448D69CC2172A57F0057B07E /* CreateContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateContractViewController.swift; path = SDHack/CreateContractViewController.swift; sourceTree = SOURCE_ROOT; };
 		9EF4132621729D900040AD74 /* SDHack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDHack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF4132921729D900040AD74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EF4132B21729D900040AD74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
