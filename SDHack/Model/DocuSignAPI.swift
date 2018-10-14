@@ -14,6 +14,22 @@ class DocuSignAPI: NSObject {
     
     static let token: String = "Bearer eyJ0eXAiOiJNVCIsImFsZyI6IlJTMjU2Iiwia2lkIjoiNjgxODVmZjEtNGU1MS00Y2U5LWFmMWMtNjg5ODEyMjAzMzE3In0.AQgAAAABAAUABwCA4FowqTHWSAgAgCB-Puwx1kgCAIkI7G6XMQdIiPxoo8qM80QVAAEAAAAYAAEAAAAFAAAADQAkAAAAZjBmMjdmMGUtODU3ZC00YTcxLWE0ZGEtMzJjZWNhZTNhOTc4MACAXQisqDHWSA.uSjsPJEtZWnqgOzsbD7YfGfRrOzCLaFxKhCJoQNMo3RXneKUj9t0V7ZnMCPxW6ZWOmJ28KW0hUyMLWWtOJ4VWNXAfmmIt5JUCpM_ZT9r6LwOcMkt70JamJEECZaUpqLx65h7qDWC5483PWrz_D6U6ZzjMznFVyAxJifEJ6IpLtKrySigvTjbBsIshPvNMThqVg6VJoe6lm3MihT_owQ3YiAkjg4lGTo59bmrpNKsn9_rcu9TQKyI9swYUQUiiz17VEiyhY5LgN7POGmGknk3qLCw6tGZhIgESF0U2MMiL7Zcu-xBmc9EVSsDOACMBP0NzfpSqk7YoE5CXoV2iPfGpg"
     
+    public class func getImageUrl(envelopeId: String, completion: @escaping ((String) -> Void)) {
+        let api = "https://demo.docusign.net/restapi/v2/accounts/6807336/views/console"
+        let url = URL(string: api)
+        let parameters = ["envelopeId":envelopeId]
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField:"Content-Type")
+        do { request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted) } catch {print("HELLO")}
+        
+        Alamofire.request(request).validate().responseJSON() {response in
+            print(response)
+            completion(JSON(response.result.value)["url"].stringValue)
+        }
+    }
+    
     public class func sendEnvelope(envelopeId: String, completion: @escaping (() -> Void)) {
         let api = "https://demo.docusign.net/restapi/v2/accounts/6807336/envelopes/\(envelopeId)"
         let url = URL(string: api)
@@ -73,7 +89,6 @@ class DocuSignAPI: NSObject {
                 let json = JSON(value)
                 for tab in json["textTabs"].arrayValue {
                     toOutput.append(tab["tabId"].stringValue)
-                    print("tab: " + tab["tabId"].stringValue)
                 }
             }
             completion(toOutput)
