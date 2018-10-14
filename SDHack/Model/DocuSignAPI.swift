@@ -49,7 +49,7 @@ class DocuSignAPI: NSObject {
     public class func updateTabValues(envelopeId: String, listOfTabIds: [String], listOfStuff: [String], completion: @escaping (() -> Void)) {
         var listOfShit = listOfStuff
 
-        let api =  "https://demo.docusign.net/restapi/v2/accounts/6807336/envelopes/\(envelopeId)/recipients/1/tabs"
+        let api =  "https://demo.docusign.net/restapi/v2/accounts/6807336/envelopes/\(envelopeId)/recipients/2/tabs"
         let url = URL(string: api)
         let parameters = ["textTabs":[["tabId":listOfTabIds[5], "value":listOfShit.removeFirst()],
                                       ["tabId":listOfTabIds[6], "value":listOfShit.removeFirst()],
@@ -74,8 +74,7 @@ class DocuSignAPI: NSObject {
     }
     
     public class func getTabIds(envelopeId: String, completion: @escaping (([String]) -> Void)) {
-        let api = "https://demo.docusign.net/restapi/v2/accounts/6807336/envelopes/\(envelopeId)/recipients/1/tabs"
-        
+        let api = "https://demo.docusign.net/restapi/v2/accounts/6807336/envelopes/\(envelopeId)/recipients/2/tabs"
         
         guard let url = URL(string: api) else {return assertionFailure("URL Failed")}
         var request = URLRequest(url: url)
@@ -84,15 +83,17 @@ class DocuSignAPI: NSObject {
 
         var toOutput: [String] = []
         Alamofire.request(request).validate().responseJSON() {response in
-            
+            print(response)
             if let value = response.result.value {
                 let json = JSON(value)
                 for tab in json["textTabs"].arrayValue {
+                    print("tab: " + tab["tabId"].stringValue)
                     toOutput.append(tab["tabId"].stringValue)
                 }
             }
             completion(toOutput)
         }
+        print("hello")
     }
     
     public class func getEnvolope(email: String, name: String, completion: @escaping (String) -> Void) {
