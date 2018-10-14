@@ -35,15 +35,15 @@ class DocuSignAPI: NSObject {
 
         let api =  "https://demo.docusign.net/restapi/v2/accounts/6807336/envelopes/\(envelopeId)/recipients/1/tabs"
         let url = URL(string: api)
-        let parameters = ["textTabs":[["tabLabel":"Text 8b194486-ffd8-468d-adea-9c768abac462", "value":listOfShit.removeFirst()],
-                                      ["tabLabel":"year", "value":listOfShit.removeFirst()],
-                                      ["tabLabel":"make", "value":listOfShit.removeFirst()],
-                                      ["tabLabel":"model", "value":listOfShit.removeFirst()],
-                                      ["tabLabel":"VIN", "value":listOfShit.removeFirst()],
-                                      ["tabLabel":"mileage", "value":listOfShit.removeFirst()],
-                                      ["tabLabel":"date of sale", "value":listOfShit.removeFirst()],
-                                      ["tabLabel":"Text ed0d71c3-5f5c-4269-9c48-19e65da5ba76", "value":listOfShit.removeFirst()],
-                                      ["tabLabel":"Text d5fc3281-8dd5-4ff0-8c31-51c3a1b978ab", "value":listOfShit.removeFirst()]
+        let parameters = ["textTabs":[["tabId":listOfTabIds[5], "value":listOfShit.removeFirst()],
+                                      ["tabId":listOfTabIds[6], "value":listOfShit.removeFirst()],
+                                      ["tabId":listOfTabIds[7], "value":listOfShit.removeFirst()],
+                                      ["tabId":listOfTabIds[8], "value":listOfShit.removeFirst()],
+                                      ["tabId":listOfTabIds[1], "value":listOfShit.removeFirst()],
+                                      ["tabId":listOfTabIds[2], "value":listOfShit.removeFirst()],
+                                      ["tabId":listOfTabIds[3], "value":listOfShit.removeFirst()],
+                                      ["tabId":listOfTabIds[4], "value":listOfShit.removeFirst()],
+                                      ["tabId":listOfTabIds[0], "value":listOfShit.removeFirst()]
             ]]
         print("count of this stuff: \(listOfShit.count)")
         var request = URLRequest(url: url!)
