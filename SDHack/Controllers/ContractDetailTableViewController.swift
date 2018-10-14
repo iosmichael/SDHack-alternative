@@ -34,7 +34,9 @@ class ContractDetailTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-                
+                let controller = storyboard?.instantiateViewController(withIdentifier: "craigslistController") as! CraigslistLinkViewController
+                controller.setParentController(controller: self)
+                self.navigationController?.pushViewController(controller, animated: true)
             }
         }
     }
@@ -47,7 +49,6 @@ class ContractDetailTableViewController: UITableViewController {
         }else{
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "craigslist", for: indexPath) as! CraigslistTableViewCell
-                cell.setDelegate(delegate: self)
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "carInfo", for: indexPath) as! CarInfoTableViewCell
@@ -63,7 +64,7 @@ class ContractDetailTableViewController: UITableViewController {
             return 135
         }else{
             if indexPath.row == 0 {
-                return 80
+                return 55
             }else{
                 return 45
             }
@@ -92,6 +93,27 @@ class ContractDetailTableViewController: UITableViewController {
         }
     }
     
+    func receiveParseData(link:String){
+        let parameters = [
+            "url":link
+        ]
+        
+        Alamofire.request("ec2-52-53-154-16.us-west-1.compute.amazonaws.com:3001", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                print(response)
+        }
+//        Alamofire.request(request).responseJSON() { response in
+//            if let value = response.result.value {
+//                let json = JSON(value)
+//                print(json)
+//                self.carInfo["Model"] = json["model"].stringValue
+//                self.carInfo["Year"] = json["year"].stringValue
+//                self.carInfo["Price"] = json["price"].stringValue
+//                self.tableView.reloadData()
+//            }
+//
+//        }
+    }
     
     /*
     // MARK: - Navigation

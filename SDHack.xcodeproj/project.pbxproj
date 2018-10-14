@@ -22,6 +22,7 @@
 		9EF413662172CB570040AD74 /* CraigslistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF413652172CB570040AD74 /* CraigslistTableViewCell.swift */; };
 		9EF413682172CB7A0040AD74 /* CarInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF413672172CB7A0040AD74 /* CarInfoTableViewCell.swift */; };
 		9EF4136A2172D4670040AD74 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF413692172D4670040AD74 /* ModalViewController.swift */; };
+		9EF413702172EFB70040AD74 /* CraigslistLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF4136F2172EFB70040AD74 /* CraigslistLinkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9EF413652172CB570040AD74 /* CraigslistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraigslistTableViewCell.swift; sourceTree = "<group>"; };
 		9EF413672172CB7A0040AD74 /* CarInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarInfoTableViewCell.swift; sourceTree = "<group>"; };
 		9EF413692172D4670040AD74 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		9EF4136F2172EFB70040AD74 /* CraigslistLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraigslistLinkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				9EF4135E2172C7C00040AD74 /* ContractDetailTableViewController.swift */,
 				448D69CC2172A57F0057B07E /* CreateContractViewController.swift */,
 				9EF413692172D4670040AD74 /* ModalViewController.swift */,
+				9EF4136F2172EFB70040AD74 /* CraigslistLinkViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				9EF413682172CB7A0040AD74 /* CarInfoTableViewCell.swift in Sources */,
 				448D69CD2172A57F0057B07E /* CreateContractViewController.swift in Sources */,
 				9EF413662172CB570040AD74 /* CraigslistTableViewCell.swift in Sources */,
+				9EF413702172EFB70040AD74 /* CraigslistLinkViewController.swift in Sources */,
 				9EF4135F2172C7C00040AD74 /* ContractDetailTableViewController.swift in Sources */,
 				9EF4132A21729D900040AD74 /* AppDelegate.swift in Sources */,
 				9EF4136A2172D4670040AD74 /* ModalViewController.swift in Sources */,

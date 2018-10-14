@@ -19,10 +19,6 @@ class CraigslistTableViewCell: UITableViewCell {
         
     }
     
-    func setDelegate(delegate:TextFieldDelegate){
-        self.craigslistTextField.delegate = delegate
-    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
