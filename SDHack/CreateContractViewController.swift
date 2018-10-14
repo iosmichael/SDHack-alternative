@@ -14,9 +14,13 @@ class CreateContractViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tabId = "aadd8a3a-f73c-4972-9aba-790402c41241"
         let accountId = "5cd608e8-b842-4b35-90c8-8b7b1d530ee9"
-        let templateId = "0effae54-f3d7-4d0b-b588-d17f44e4c00c"
-        let apiToContact = "https://demo.docusign.net/restapi/v2/accounts/\(accountId)/templates/\(templateId)/recipients"
+        let templateId = "e628033a-8d33-4e28-84d3-bed003762b29"
+        
+        let api = "https://demo.docusign.net/restapi/v2/accounts/\(accountId)/tab_definitions/\(tabId)"
+        let apiToContact = "https://demo.docusign.net/restapi/v2/accounts/\(accountId)/templates/\(templateId)"
 
         guard let url = URL(string: apiToContact) else {return assertionFailure("URL Failed")}
 
@@ -26,6 +30,9 @@ class CreateContractViewController: UIViewController {
         Alamofire.request(request).validate().responseJSON() { response in
             print(response)
         }
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
