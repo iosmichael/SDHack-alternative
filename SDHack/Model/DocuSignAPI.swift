@@ -34,14 +34,14 @@ class DocuSignAPI: NSObject {
 
         let api =  "https://demo.docusign.net/restapi/v2/accounts/6807336/envelopes/\(envelopeId)/recipients/1/tabs"
         let url = URL(string: api)
-        let parameters = ["textTabs":[["tabId":listOfTabIds[0], "value":listOfShit[0]],
-                                      ["tabId":listOfTabIds[1], "value":listOfShit[1]],
-                                      ["tabId":listOfTabIds[2], "value":listOfShit[2]],
-                                      ["tabId":listOfTabIds[3], "value":listOfShit[3]],
-                                      ["tabId":listOfTabIds[4], "value":listOfShit[4]],
-                                      ["tabId":listOfTabIds[5], "value":listOfShit[5]],
-                                      ["tabId":listOfTabIds[6], "value":listOfShit[6]],
-                                      ["tabId":listOfTabIds[7], "value":listOfShit[7]],
+        let parameters = ["textTabs":[["tabId":listOfTabIds[0], "value":listOfShit[1]],
+                                      ["tabId":listOfTabIds[1], "value":listOfShit[2]],
+                                      ["tabId":listOfTabIds[2], "value":listOfShit[3]],
+                                      ["tabId":listOfTabIds[3], "value":listOfShit[4]],
+                                      ["tabId":listOfTabIds[4], "value":listOfShit[5]],
+                                      ["tabId":listOfTabIds[5], "value":listOfShit[6]],
+                                      ["tabId":listOfTabIds[6], "value":listOfShit[7]],
+                                      ["tabId":listOfTabIds[7], "value":listOfShit[8]],
                                       ["tabId":listOfTabIds[8], "value":listOfShit[8]]
             ]]
         var request = URLRequest(url: url!)

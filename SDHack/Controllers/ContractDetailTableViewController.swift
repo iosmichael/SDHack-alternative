@@ -41,17 +41,18 @@ class ContractDetailTableViewController: UITableViewController {
                 self.navigationController?.pushViewController(controller, animated: true)
             }
             if indexPath.row == self.carInfo.count + self.carTags.count + 1 {
-                DocuSignAPI.getEnvolope(email: self.userInfo["email"]!, name: self.userInfo["first"]!) { (envelopeId) in
+                DocuSignAPI.getEnvolope(email: self.seller["email"]!, name: self.seller["firstName"]!) { (envelopeId) in
                     self.envelopeId = envelopeId
                     print(envelopeId)
                     DocuSignAPI.getTabIds(envelopeId: envelopeId, completion: { (listOfTabs) in
                         var listOfShit: [String] = []
-                        listOfShit.append(self.userInfo["first"]!) // person's first name , eventually add last
+                        listOfShit.removeAll()
+                        listOfShit.append(self.seller["firstName"]! + " " + self.seller["lastName"]!)
                         listOfShit.append(self.carInfo["year"]!)
                         listOfShit.append("Model: ")
                         listOfShit.append(self.carInfo["model"]!)
                         listOfShit.append("VIN!")
-                        listOfShit.append("Mileage!!")
+                        listOfShit.append("mileage")
                         listOfShit.append("October 14, 2018")
                         listOfShit.append(self.carInfo["price"]!)
                         listOfShit.append(self.carTags.description)
