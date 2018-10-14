@@ -27,7 +27,6 @@ class ModalViewController: UIViewController {
             "lastName": lastName.text!,
             "email": email.text!
         ]
-        
         self.navigationController?.pushViewController(controller, animated: true)
     }
     override func didReceiveMemoryWarning() {
