@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ModalViewController: UIViewController {
 
@@ -32,5 +33,11 @@ class ModalViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func createEnvelope() -> String {
+        
+    }
+    
+    
 
 }
