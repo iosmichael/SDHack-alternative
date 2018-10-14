@@ -88,6 +88,8 @@ class ContractDetailTableViewController: UITableViewController {
                 }
             }
                 let controller = storyboard?.instantiateViewController(withIdentifier: "previewController") as! PreviewViewController
+                controller.envelopeId = self.envelopeId
+            
                 self.navigationController?.pushViewController(controller, animated: true)
             }
         }

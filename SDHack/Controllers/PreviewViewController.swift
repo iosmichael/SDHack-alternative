@@ -7,19 +7,28 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import WebKit
 
-class PreviewViewController: UIViewController {
+class PreviewViewController: UIViewController, UIWebViewDelegate {
+    var envelopeId: String = ""
 
-    @IBOutlet weak var previewPDF: UIImageView!
+    @IBOutlet weak var webView: WKWebView!
+    
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self as? WKUIDelegate
+        view = webView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        previewPDF.image = UIImage.init(named: "pdf")
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        DocuSignAPI.getImageUrl(envelopeId: envelopeId) { (link) in
+            let myURL = URL(string:link)
+            let myRequest = URLRequest(url: myURL!)
+            self.webView.load(myRequest)
+        }
     }
     
 
