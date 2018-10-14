@@ -2,10 +2,10 @@
 ## Team ##
 - Name: EdgeOmelette
 - Members:
--- Michael
--- Niyonika
--- Sakura
--- Vie
+  - Michael
+  - Niyonika
+  - Sakura
+  - Vie
 
 ## About EZSign ##
 EZSign is a project that dedicated to bring accessibility of legal contract signing process to individuals' daily lives. After comparing existing products in the industry, we found out that **DocuSign Developer API** has most of the features we need to accomplish our project objectives.
