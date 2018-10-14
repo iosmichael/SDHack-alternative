@@ -140,26 +140,49 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yW-x2-WL4">
-                                            <rect key="frame" x="16" y="6" width="67" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yW-x2-WL4">
+                                            <rect key="frame" x="16" y="6" width="48.5" height="30"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a7T-Kn-uFt">
-                                            <rect key="frame" x="91" y="6" width="268" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a7T-Kn-uFt">
+                                            <rect key="frame" x="72.5" y="6" width="286.5" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="0yW-x2-WL4" firstAttribute="leading" secondItem="Gt5-bd-66K" secondAttribute="leading" constant="16" id="2X5-RS-luz"/>
+                                        <constraint firstAttribute="bottom" secondItem="a7T-Kn-uFt" secondAttribute="bottom" constant="8.5" id="2jh-jn-eIC"/>
+                                        <constraint firstItem="a7T-Kn-uFt" firstAttribute="leading" secondItem="0yW-x2-WL4" secondAttribute="trailing" constant="8" id="DNF-88-dGq"/>
+                                        <constraint firstItem="0yW-x2-WL4" firstAttribute="top" secondItem="Gt5-bd-66K" secondAttribute="top" constant="6" id="Fg1-SV-3k3"/>
+                                        <constraint firstAttribute="trailing" secondItem="a7T-Kn-uFt" secondAttribute="trailing" constant="16" id="Her-Zs-hxx"/>
+                                        <constraint firstItem="a7T-Kn-uFt" firstAttribute="leading" secondItem="0yW-x2-WL4" secondAttribute="trailing" constant="8" id="dO2-R4-HdL"/>
+                                        <constraint firstAttribute="bottom" secondItem="0yW-x2-WL4" secondAttribute="bottom" constant="8.5" id="vvy-Wb-43l"/>
+                                        <constraint firstItem="a7T-Kn-uFt" firstAttribute="top" secondItem="Gt5-bd-66K" secondAttribute="top" constant="6" id="x6u-BN-smG"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="info" destination="a7T-Kn-uFt" id="djq-4O-Nc9"/>
                                     <outlet property="keyLabel" destination="0yW-x2-WL4" id="1DX-hr-WfE"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nB3-s3-xXb">
+                                <rect key="frame" x="0.0" y="263" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nB3-s3-xXb" id="DtY-qt-R6Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u5-At-SSw">
+                                            <rect key="frame" x="320" y="6" width="32" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Next"/>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

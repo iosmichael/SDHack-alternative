@@ -14,7 +14,7 @@ import Material
 class ContractDetailTableViewController: UITableViewController {
     
     var userInfo:[String:String] = ["first":"", "last":"", "email":""]
-    var carInfo:[String: String] = ["Model":"", "Year":"", "Price":""]
+    var carInfo:[String: String] = ["model":"", "year":"", "price":""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +53,7 @@ class ContractDetailTableViewController: UITableViewController {
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "carInfo", for: indexPath) as! CarInfoTableViewCell
                 let key = Array(self.carInfo.keys)[indexPath.row - 1]
+                print("\(key):\(self.carInfo[key])")
                 cell.setLabel(keyLabel: key, valueLabel: self.carInfo[key]!)
                 return cell
             }
@@ -85,34 +86,32 @@ class ContractDetailTableViewController: UITableViewController {
             print(response)
             if let value = response.result.value {
                 let json = JSON(value)
-                self.userInfo["First Name"] = json["given_name"].stringValue
-                self.userInfo["Last Name"] = json["family_name"].stringValue
-                self.userInfo["Email"] = json["email"].stringValue
+                self.userInfo["first"] = json["given_name"].stringValue
+                self.userInfo["last"] = json["family_name"].stringValue
+                self.userInfo["email"] = json["email"].stringValue
                 self.tableView.reloadData()
             }
         }
     }
     
     func receiveParseData(link:String){
-        let parameters = [
-            "url":link
-        ]
-        
-        Alamofire.request("ec2-52-53-154-16.us-west-1.compute.amazonaws.com:3001", method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                print(response)
+        let apiToContact = "http://ec2-52-53-154-16.us-west-1.compute.amazonaws.com:3001/?"
+        let parameters = ["url":link]
+        Alamofire.request(apiToContact, parameters: parameters).responseJSON(options:.mutableContainers) {response in
+            if let value = response.result.value {
+                let json = JSON(value)
+                for (key, _) in json {
+                    self.carInfo[key] = json[key].stringValue
+                }
+                self.carInfo["model"] = json["model"].stringValue
+                self.carInfo["price"] = json["price"].stringValue
+                self.carInfo["year"] = json["year"].stringValue
+                self.tableView.reloadData()
+            }
+//            self.carInfo["Model"] = JSON["model"]
+//            self.carInfo["Year"] = JSON["year"]
+//            self.carInfo["Price"] = JSON["price"]
         }
-//        Alamofire.request(request).responseJSON() { response in
-//            if let value = response.result.value {
-//                let json = JSON(value)
-//                print(json)
-//                self.carInfo["Model"] = json["model"].stringValue
-//                self.carInfo["Year"] = json["year"].stringValue
-//                self.carInfo["Price"] = json["price"].stringValue
-//                self.tableView.reloadData()
-//            }
-//
-//        }
     }
     
     /*
